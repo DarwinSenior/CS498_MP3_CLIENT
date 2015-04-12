@@ -1,0 +1,43 @@
+<div ng-controller="UserInfoController">
+	<div class="row">
+		<div class="columns small-10">
+			<span style="font-size: 40px">UserProfile</span>
+			<span>just like facebook but better</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="columns small-6">
+			<span>{{user.name}}</span>
+		</div>
+		<div class="columns small-6">
+			<span>{{user.email}}</span>
+		</div>
+	</div>
+	<div class="row" ng-repeat="task in notcompleted(user.tasks)">
+		<hr>
+		<div class="columns small-4">
+			<a ng-href="#/task/{{task._id}}">{{task.name}}</a>
+		</div>
+		<div class="columns small-4">
+			Deadline:{{task.deadline}}
+		</div>
+		<div class="columns small-4">
+			<a class="button info" ng-click="complete(task._id)">Complete</a>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="columns small-6"><a class="button" ng-click="showComplete=!showComplete">Show Complete Tasks</a></div>
+	</div>
+	<hr>
+	<div ng-show="showComplete">
+		<div class="row" ng-repeat="task in completed(user.tasks)">
+			<div class="columns small-4">
+				<a ng-href="#/task/{{task._id}}">{{task.name}}</a>
+			</div>
+			<div class="columns small-4">
+				Deadline:{{task.deadline}}
+			</div>
+		</div>
+	</div>
+</div>

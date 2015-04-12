@@ -1,0 +1,59 @@
+<div ng-controller="TaskController">
+	<div class="row">
+		<div class="columns small-10">
+			<span style="font-size: 40px">Tasks</span>
+			<span>really important stuff</span>
+		</div>
+		<div class="columns small-2">
+			<a class="button expand success" ng-href="#/createTask">Add Task</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="columns small-4">
+			<input type="radio" ng-model="type" value="pending" ng-change="fetch()"><label>Pending</label>
+			<input type="radio" ng-model="type" value="completed" ng-change="fetch()"><label>Completed</label>
+			<input type="radio" ng-model="type" value="all" ng-change="fetch()"><label>All</label>
+		</div>
+		<div class="columns small-4">
+			<label> Sort By:
+		    	<select ng-model='sort' ng-change='fetch()'>
+		    		<option value='nothing' selected="true">Do not sort</option>
+					<option value="name">name</option>
+					<option value="description">description</option>
+					<option value="assignedUser">assigned user</option>
+					<option value="dateCreated">date created</option>
+				</select>
+			</label>
+		</div>
+		<div class="columns small-4">
+			<input type="radio" ng-model="order" value="ascending" ng-change="fetch()"><label>Ascending</label>
+			<input type="radio" ng-model="order" value="descending" ng-change="fetch()"><label>Descending</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="columns small-2">
+			<a class="button expand warning" ng-click="turn(-1)">Before</a>
+		</div>
+		<div class="columns small-2">
+			<a class="button expand warning" ng-click="turn(1)">Next</a>
+		</div>
+	</div>
+	<div class="row" ng-repeat="task in selectedTasks">
+		<hr>
+		<div class="columns small-4">
+			<a ng-href="#/task/{{task._id}}">{{task.name}}</a>
+		</div>
+		<div class="columns small-4">
+			<div class="row">
+				Deadline:{{task.deadline}}
+			</div>
+			<div class="row">
+				Assigned To: {{task.assignedUserName}}
+			</div>
+		</div>
+		<div class="columns small-4">
+			<a class="button alert exapand" ng-click="deleteTask(task)">Delete</a>
+			<a class="button warning exapand" ng-href="#/editTask/{{task._id}}">Edit</a>
+		</div>
+	</div>
+</div>

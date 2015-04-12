@@ -1,0 +1,33 @@
+<div ng-controller="CreateUserController">
+	<div class="row">
+		<div class="columns small-10">
+			<span style="font-size: 40px">Create New User</span>
+			<span>our next task-slayer</span>
+		</div>
+		<div class="columns small-2">
+			<a class="button expand success" href="#/createUser">Add User</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="column small-8 small-centered">
+		<form data-abide ng-submit="submit()">
+			<label>User Name
+				<input type="text" required pattern="[a-zA-Z]+" placeholder="username" ng-model="username">
+			</label>
+			<label>Email Adress
+				<input type="email" required placeholder="email" ng-model='email'>
+			</label>
+			<input class="button expand" type="submit" value="Add">
+		</form>
+		</div>
+		<div class="column small-8 small-centered">
+			<div class="expand success button" ng-show="success">
+				{{successMsg}}
+			</div>
+			<div class="expand alert button" ng-show="fail">
+				{{failMsg}}
+			</div>
+		</div>
+	</div>
+	
+</div>

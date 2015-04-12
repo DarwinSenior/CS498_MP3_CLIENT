@@ -1,0 +1,25 @@
+<div ng-controller="TaskInfoController">
+	<div class="row">
+		<hr>
+		<div class="columns small-8 small-centered">
+			<h3>
+				<a ng-href="#/task/{{task._id}}">{{task.name}}</a>
+			</h3>
+			<p>Deadline:{{task.deadline}}</p>
+			<p>Assigned To: <a ng-href="#/user/{{task.assignedUser}}">{{task.assignedUserName}}<a></p>
+			<h3>Description</h3>
+			<p>{{task.description}}</p>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="columns small-3">
+		<a class="button warning expand" ng-href="#/editTask/{{task._id}}">Edit Task</a>
+		</div>
+		<div class="columns small-3">
+			<a class="button info expand" ng-click="complete(task._id)">Complete</a>
+		</div>
+		
+	</div>
+	<hr>
+</div>

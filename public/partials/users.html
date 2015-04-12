@@ -1,0 +1,31 @@
+<div ng-controller="UserController">
+	<div class="row">
+		<div class="columns small-10">
+			<span style="font-size: 40px">Users</span>
+			<span>a list of cool people</span>
+		</div>
+		<div class="columns small-2">
+			<a class="button expand success" href="#/createUser">Add User</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="columns small-1">
+			<a class="button expand warning" ng-click="turn(-1)">Before</a>
+		</div>
+		<div class="columns small-1">
+			<a class="button expand warning" ng-click="turn(1)">Next</a>
+		</div>
+	</div>
+	<div class="row" ng-repeat="user in selectedUsers">
+		<hr>
+		<div class="columns small-4">
+			<a ng-href="#/user/{{user._id}}">{{user.name}}</a>
+		</div>
+		<div class="columns small-4">
+			{{user.email}}
+		</div>
+		<div class="columns small-4">
+			<a class="button alert exapand" ng-click="deleteUser(user)">Delete</a>
+		</div>
+	</div>
+</div>
