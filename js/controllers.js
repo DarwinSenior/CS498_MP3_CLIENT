@@ -2,10 +2,10 @@ var demoControllers = angular.module('demoControllers', []);
 
 function SettingController($scope, $window){
   $scope.init = function(){
-    $scope.urltext = $window.sessionStorage.urltext || "http://127.0.0.1:4000";
+    $scope.urltext = $window.sessionStorage.urltext || "http://www.uiucwp.com:4000";
   }
   $scope.setURL = function(){
-    $window.sessionStorage.urltext = $scope.urltext || "http://127.0.0.1:4000";
+    $window.sessionStorage.urltext = $scope.urltext || "http://www.uiucwp.com:4000";
   }
   $scope.init();
 }
