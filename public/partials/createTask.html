@@ -11,12 +11,12 @@
 	<div class="row">
 		<div class="column small-8 small-centered">
 		<form data-abide ng-submit="submit()">
-			<label>Task Name
+			<label>Task Name*
 				<input type="text" required ng-model="the.taskname">
 			</label>
-			<label>Deadline:
+			<label>Deadline*:
 				<datepicker>
-					<input ng-model="the.deadline" type="text">
+					<input ng-model="the.deadline" require type="text">
 				</datepicker>
 			</label>
 			<label>

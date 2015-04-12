@@ -3,6 +3,7 @@ var demoControllers = angular.module('demoControllers', []);
 function SettingController($scope, $window){
   $scope.init = function(){
     $scope.urltext = $window.sessionStorage.urltext || "http://www.uiucwp.com:4000";
+    $window.sessionStorage.urltext = $scope.urltext;
   }
   $scope.setURL = function(){
     $window.sessionStorage.urltext = $scope.urltext || "http://www.uiucwp.com:4000";
@@ -283,10 +284,14 @@ function UserInfoController($scope, $window, $http, $routeParams){
   }
   $scope.complete = function(taskid){
     var url = $window.sessionStorage.urltext+'/api/tasks/'+taskid;
-    $http.put(url, {$set: {completed: true}})
-    .success(function(data, status){
-      $scope.fetchTasks();
-    });
+    $http.get(url).success(function(data){
+      task = data.data;
+      task.completed = true;
+      $http.put(url, task)
+      .success(function(data, status){
+        $scope.fetchTasks();
+      });
+    })
   }
   $scope.completed = function(tasks){
     if(Array.isArray(tasks)){
